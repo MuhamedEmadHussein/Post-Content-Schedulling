@@ -5,10 +5,11 @@ namespace App\Repositories;
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Cache;
+use App\Interfaces\PostRepositoryInterface;
 
 class PostRepository implements PostRepositoryInterface
 {
-    public function getUserPosts(int $userId, array $filters = []): Collection
+    public function getUserPosts(int $userId, array $filters = [])
     {
         $query = Post::where('user_id', $userId)->with('platforms');
         if (isset($filters['status'])) {

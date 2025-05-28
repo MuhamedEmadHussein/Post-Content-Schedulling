@@ -11,7 +11,7 @@ use App\Http\Controllers\Api\ActivityLogController;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware(['auth:sanctum', 'throttle:api'])->group(function () {
     Route::get('/user', [AuthController::class, 'user']);
     Route::apiResource('posts', PostController::class)->only(['index', 'store', 'update', 'destroy']);
     Route::put('posts/{post}/schedule', [PostController::class, 'schedule']);

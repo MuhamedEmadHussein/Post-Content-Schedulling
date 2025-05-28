@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repositories\PostRepositoryInterface;
+use App\Interfaces\PostRepositoryInterface;
 use App\Models\ActivityLog;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
