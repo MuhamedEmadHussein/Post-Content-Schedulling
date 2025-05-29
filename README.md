@@ -126,7 +126,7 @@ npm run dev
 ```
 ERD Design/Post_Schedule_ERD.jpg
 ```
-<img src="ERD Design/Post_Schedule_ERD.jpg" width="200"/>
+<img src="ERD Design/Post_Schedule_ERD.jpg" width="600"/>
 
 ### API Documentation
 The API endpoints are documented in the Postman collection. You can import the collection from:
