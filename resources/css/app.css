@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import 'flatpickr/dist/flatpickr.min.css';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -8,4 +9,103 @@
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* Custom styles for the content scheduler */
+.character-counter {
+    transition: color 0.3s ease;
+}
+
+.character-counter.warning {
+    @apply text-yellow-600;
+}
+
+.character-counter.danger {
+    @apply text-red-600;
+}
+
+.platform-selector {
+    @apply grid grid-cols-2 gap-3 sm:grid-cols-4;
+}
+
+.platform-card {
+    @apply relative flex flex-col items-center p-4 border rounded-lg cursor-pointer transition-all duration-200;
+}
+
+.platform-card:hover {
+    @apply shadow-md;
+}
+
+.platform-card.selected {
+    @apply border-blue-500 bg-blue-50;
+}
+
+.post-card {
+    @apply bg-white rounded-lg shadow-sm border p-6 hover:shadow-md transition-shadow duration-200;
+}
+
+.status-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+/* Calendar styles */
+.calendar-grid {
+    @apply grid grid-cols-7 gap-1;
+}
+
+.calendar-day {
+    @apply min-h-24 p-2 border border-gray-200 bg-white;
+}
+
+.calendar-day.other-month {
+    @apply bg-gray-50 text-gray-400;
+}
+
+.calendar-post {
+    @apply text-xs p-1 mb-1 rounded truncate;
+}
+
+/* Loading spinner */
+.spinner {
+    @apply inline-block w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin;
+}
+
+/* Form validation errors */
+.error-message {
+    @apply text-red-600 text-sm mt-1;
+}
+
+.form-field.error input,
+.form-field.error textarea,
+.form-field.error select {
+    @apply border-red-500 focus:ring-red-500 focus:border-red-500;
+}
+
+/* Analytics charts */
+.chart-container {
+    @apply bg-white p-6 rounded-lg shadow-sm border;
+}
+
+/* Activity log */
+.activity-item {
+    @apply flex items-start space-x-3 py-3 border-b border-gray-100 last:border-b-0;
+}
+
+.activity-icon {
+    @apply flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium;
+}
+
+/* Responsive design utilities */
+@media (max-width: 640px) {
+    .platform-selector {
+        @apply grid-cols-1;
+    }
+
+    .calendar-grid {
+        @apply text-sm;
+    }
+
+    .calendar-day {
+        @apply min-h-20;
+    }
 }

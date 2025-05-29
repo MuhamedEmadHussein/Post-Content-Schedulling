@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -24,9 +25,15 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        // Create token
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        // Log the user in
+        Auth::login($user);
+
         return response()->json([
             'user' => $user,
-            'token' => $user->createToken('auth_token')->plainTextToken,
+            'token' => $token,
         ], 201);
     }
 
@@ -45,14 +52,31 @@ class AuthController extends Controller
             ]);
         }
 
+        // Create token
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        // Log the user in
+        Auth::login($user);
+
         return response()->json([
             'user' => $user,
-            'token' => $user->createToken('auth_token')->plainTextToken,
+            'token' => $token,
         ]);
     }
 
     public function user(Request $request)
     {
         return response()->json($request->user());
+    }
+
+    public function logout(Request $request)
+    {
+        // Revoke the token
+        $request->user()->currentAccessToken()->delete();
+
+        // Log the user out
+        Auth::logout();
+
+        return response()->json(['message' => 'Logged out successfully']);
     }
 }
