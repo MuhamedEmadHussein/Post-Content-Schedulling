@@ -76,6 +76,9 @@ php artisan migrate:fresh --seed
 
 # Create a test user
 php artisan db:seed --class=UserSeeder
+
+# Running Schedule Task
+php artisan schedule:work
 ```
 
 4. **Install JavaScript dependencies**
@@ -119,10 +122,15 @@ npm run dev
      - Password: `password123`
 
 ### Database Schema (ERD)
-![Content Scheduler ERD](ERD Design/Post_Schedule_ERD.jpg)
+![Content Scheduler ERD]
+```
+ERD Design/Post_Schedule_ERD.jpg
+```
+<img src="ERD Design/Post_Schedule_ERD.jpg" width="200"/>
 
 ### API Documentation
 The API endpoints are documented in the Postman collection. You can import the collection from:
+https://blue-meteor-377620.postman.co/workspace/601034f5-f451-4829-84a2-3ba5859ab33e/documentation/43071457-34da1890-802c-44f2-bc5f-1266af9a9776
 ```
 Postman/ContentScheduler.postman_collection.json
 ```
