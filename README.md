@@ -54,6 +54,7 @@ A modern, feature-rich content scheduling application built with Laravel and Alp
 - Composer
 - Node.js 16+ and NPM
 - MySQL/PostgreSQL database
+- Redis Server (for caching)
 
 ### Quick Setup
 
@@ -68,18 +69,27 @@ cd content-scheduler
 composer install
 ```
 
-3. **Install JavaScript dependencies**
+3. **Set up the database**
+```bash
+# Create a fresh database with seeders
+php artisan migrate:fresh --seed
+
+# Create a test user
+php artisan db:seed --class=UserSeeder
+```
+
+4. **Install JavaScript dependencies**
 ```bash
 npm install
 ```
 
-4. **Environment setup**
+5. **Environment setup**
 ```bash
 cp .env.example .env
 php artisan key:generate
 ```
 
-5. **Configure your database in `.env`**
+6. **Configure your database and Redis in `.env`**
 ```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -87,28 +97,35 @@ DB_PORT=3306
 DB_DATABASE=content_scheduler
 DB_USERNAME=your_username
 DB_PASSWORD=your_password
+
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
 ```
 
-6. **Run migrations and seeders**
+7. **Start the development servers**
 ```bash
-php artisan migrate --seed
-```
+# Start Laravel development server
+php artisan serve
 
-7. **Build frontend assets**
-```bash
-npm run build
-# or for development
+# Start Vite development server
 npm run dev
 ```
 
-8. **Start the development server**
-```bash
-php artisan serve
-```
-
-9. **Visit your application**
+8. **Visit your application**
    - Open http://localhost:8000 in your browser
-   - Use demo credentials: `demo@contentscheduler.com` / `password123`
+   - Login with the seeded user credentials:
+     - Email: `demo@contentscheduler.com`
+     - Password: `password123`
+
+### Database Schema (ERD)
+![Content Scheduler ERD](docs/erd.png)
+
+### API Documentation
+The API endpoints are documented in the Postman collection. You can import the collection from:
+```
+Postman/ContentScheduler.postman_collection.json
+```
 
 ## 🏗 Architecture
 
