@@ -119,7 +119,7 @@ npm run dev
      - Password: `password123`
 
 ### Database Schema (ERD)
-![Content Scheduler ERD](docs/erd.png)
+![Content Scheduler ERD](ERD Design/Post_Schedule_ERD.jpg)
 
 ### API Documentation
 The API endpoints are documented in the Postman collection. You can import the collection from:
