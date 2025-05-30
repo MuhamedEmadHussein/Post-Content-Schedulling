@@ -61,7 +61,7 @@ A modern, feature-rich content scheduling application built with Laravel and Alp
 1. **Clone the repository**
 ```bash
 https://github.com/MuhamedEmadHussein/Post-Content-Schedulling.git
-cd content-scheduler
+cd Post-Content-Schedulling
 ```
 
 2. **Install PHP dependencies**
