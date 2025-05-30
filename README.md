@@ -60,7 +60,7 @@ A modern, feature-rich content scheduling application built with Laravel and Alp
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/content-scheduler.git
+https://github.com/MuhamedEmadHussein/Post-Content-Schedulling.git
 cd content-scheduler
 ```
 
